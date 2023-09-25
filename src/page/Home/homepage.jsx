@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Hero from "../Hero";
+import Hero from "../../componets/Hero";
 
 import { ImageData } from "../../constant/data";
-import Footer from "../footer";
+import Footer from "../../componets/footer";
 import { BiChevronDown } from "react-icons/bi";
 
 const Homepage = () => {
@@ -46,18 +46,7 @@ const Homepage = () => {
           </h1>
         </div>
 
-        {/* <div className="flex flex-row gap-4 mt-10">
-          <div className="basis-1/4">
-            <h1 className="bg-green-900">1</h1>
-          </div>
-          <div className="basis-1/4">
-            <h1 className="bg-green-900">2</h1>
-          </div>
-          <div className=" basis-1/2">
-            <h1 className="bg-green-900">3</h1>
-          </div>  */}
-
-        <div className="grid grid-flow-col grid-rows-5 gap-4 mt-10 ">
+        <div className="grid grid-flow-col grid-rows-5 gap-4 mt-10 max-w-7xl mx-auto">
           {data?.slice(0, 3)?.map((item, index) => (
             <div
               key={item._id}
@@ -77,7 +66,7 @@ const Homepage = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-row gap-4 ">
+        <div className="flex flex-row gap-4 max-w-7xl mx-auto">
           {data?.slice(0, 3)?.map((item, index) => (
             <div
               key={item._id}
