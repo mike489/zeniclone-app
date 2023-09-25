@@ -17,7 +17,7 @@ const Selector = () => {
       });
   }, []);
   return (
-    <div className="w-72 font-medium h-80">
+    <div className="w-72 font-medium h-fit">
       <div
         onClick={() => setOpen(!open)}
         className={`bg-gray-600  w-full p-2 flex items-center justify-between rounded ${
