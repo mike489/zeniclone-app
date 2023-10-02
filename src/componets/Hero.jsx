@@ -1,6 +1,7 @@
 import React from "react";
 import HeroImg from "../dirk-980.gif";
-import mainLog from "../assets/zenith-logo.png"
+import Logo_spot from "../assets/Logo_spot.webp";
+
 const Hero = () => {
   return (
     <main
@@ -9,7 +10,7 @@ const Hero = () => {
     >
       <div className="container mx-auto relative min-h-screen flex flex-col md:flex-row items-center justify-center p-5 md:p-10">
         <p className="text-sky-400 text-4xl md:text-5xl font-bold">
-        <img src={mainLog} alt="" />
+          <img src={Logo_spot} alt="" />
         </p>
       </div>
     </main>
