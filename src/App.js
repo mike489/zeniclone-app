@@ -3,7 +3,8 @@ import "./App.css";
 import Homepage from "./page/Home/homepage";
 import Error from "./page/error/Error";
 
-import ProductDetail from "./page/details/productDetai";
+import ProductDetail from "./page/details/productDetail";
+import CaseStudy from "./page/casestudy/caseDetail";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/blog/details/:id" element={<ProductDetail />} />
+        <Route path="/blog/case/:id" element={<CaseStudy />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
