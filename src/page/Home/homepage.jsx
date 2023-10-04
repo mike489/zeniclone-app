@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CaseCard from "../../componets/caseCard";
 
+import NavBar from "../../componets/NavBar";
+
 const Homepage = () => {
   const navigate = useNavigate();
   const [postData, setPostData] = useState([]);
@@ -29,14 +31,23 @@ const Homepage = () => {
   }
   return (
     <div>
+      <NavBar />
       <Hero />
       <CaseCard />
 
       <section>
-        <div className="flex items-start justify-center mt-20">
+        <div className="flex flex-row items-center justify-between mt-20 max-w-7xl mx-auto">
           <h1 className="font-normal text-zinc-700 text-[48px]">
             Thought Leadership
           </h1>
+          <div className="flex">
+            <button
+              type="button"
+              className="flex items-center px-3 py-2 text-base sm:text-lg font-normal text-[#09C5FF] focus:outline-none bg-white border-2 border-[#09C5FF] hover:bg-[#09C5FF] hover:text-white focus:z-10 focus:ring-10"
+            >
+              Read More <BiChevronDown size={30} />
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-7xl mx-auto mt-5">
@@ -92,14 +103,7 @@ const Homepage = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-row justify-center mt-5">
-          <button
-            type="button"
-            className="flex items-center px-3 py-2 text-base sm:text-lg font-normal text-[#09C5FF] focus:outline-none bg-white border-2 border-[#09C5FF] hover:bg-[#09C5FF] hover:text-white focus:z-10 focus:ring-10"
-          >
-            Read More <BiChevronDown size={30} />
-          </button>
-        </div>
+
         <Footer />
       </section>
     </div>

@@ -8,6 +8,7 @@ function ProductDetail() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     fetchData();
   }, [id]);

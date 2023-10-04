@@ -23,9 +23,9 @@ const CaseCard = () => {
 
   return (
     <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
-      {caseData?.case_studies?.data?.slice(0, 12)?.map((item, index) => (
+      {caseData?.case_studies?.data?.slice(0, 9)?.map((item, index) => (
         <div
-          onClick={() => navigate(`"/blog/case/"${item.id}`)}
+          onClick={() => navigate(`/blog/case/${item.id}`)}
           className="relative overflow-hidden shadow-lg cursor-pointer group hover:bg-opacity-100 transition duration-500 ease-in-out"
           key={item.id}
         >
@@ -35,14 +35,14 @@ const CaseCard = () => {
             alt="Flower and sky"
           />
 
-          <div className="absolute inset-0 flex flex-col justify-center  opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
-            <div className="hover:bg-[rgba(0,143,188,0.7)] absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out ">
+          <div className="hover:bg-[rgba(0,143,188,0.7)] absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out ">
+            <div className="flex flex-col items-center justify-center absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
               <img
                 src={item?.logo?.original_url}
                 alt="logo"
-                className="mb- text-xl font-semibold tracking-tight text-white w-2/5"
+                className="text-xl font-semibold tracking-tight text-white w-1/5"
               />
-              <h4 className="mb- text-xl font-semibold tracking-tight text-white">
+              <h4 className="text-xl font-semibold tracking-tight text-white mt-5">
                 {item.title}
               </h4>
             </div>
