@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Hero from "../../componets/Hero";
 
-// import { ImageData } from "../../constant/data";
-import Footer from "../../componets/footer";
 import { BiChevronDown } from "react-icons/bi";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CaseCard from "../../componets/caseCard";
-
-import NavBar from "../../componets/NavBar";
+import { CustomSpinner } from "../../componets/spinner";
+// import NavBar from "../../componets/NavBar";
 
 const Homepage = () => {
   const navigate = useNavigate();
   const [postData, setPostData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -21,27 +20,32 @@ const Homepage = () => {
 
   async function fetchData() {
     try {
+      setLoading(true);
       const res = await axios.get(
         "https://spotlightmedia.amanueld.info/api/posts/"
       );
       setPostData(res.data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
   }
+
+  if (loading) {
+    return <CustomSpinner />;
+  }
   return (
-    <div>
-      <NavBar />
+    <body>
       <Hero />
       <CaseCard />
-
       <section>
-        <div className="flex flex-row items-center justify-between mt-20 max-w-7xl mx-auto">
+        <div className="flex flex-row items-center justify-between mt-14 max-w-7xl mx-auto">
           <h1 className="font-normal text-zinc-700 text-[48px]">
             Thought Leadership
           </h1>
-          <div className="flex">
+          <div className="flex" key={fetchData?._id}>
             <button
+              onClick={() => navigate(`/blog/article/${fetchData.id}`)}
               type="button"
               className="flex items-center px-3 py-2 text-base sm:text-lg font-normal text-[#09C5FF] focus:outline-none bg-white border-2 border-[#09C5FF] hover:bg-[#09C5FF] hover:text-white focus:z-10 focus:ring-10"
             >
@@ -103,10 +107,8 @@ const Homepage = () => {
             </div>
           ))}
         </div>
-
-        <Footer />
       </section>
-    </div>
+    </body>
   );
 };
 

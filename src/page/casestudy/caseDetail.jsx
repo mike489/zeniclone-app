@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import parse from "html-react-parser";
 import { CustomSpinner } from "../../componets/spinner";
 
 const CaseDetail = () => {
@@ -30,31 +31,49 @@ const CaseDetail = () => {
   }
 
   return (
-    <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
-      <div
-        className="relative overflow-hidden shadow-lg cursor-pointer group hover:bg-opacity-100 transition duration-500 ease-in-out"
-        key={caseData?._id}
-      >
-        <img
-          src={caseData?.case_study?.thumbnail?.original_url}
-          className="object-cover w-full h-60"
-          alt="Flower and sky"
-        />
+    <div>
+      <div key={caseData?._id}>
+        <div
+          style={{ position: "relative", textAlign: "center", color: "white" }}
+        >
+          <img
+            className="w-full h-[500]"
+            src={caseData?.case_study?.thumbnail?.original_url}
+            alt={caseData?.case_study?.insight}
+            style={{ filter: "brightness(50%)" }}
+          />
+          <h1
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              fontSize: "50px",
+              fontWeight: "bold",
+            }}
+          >
+            {caseData?.case_study?.title}
+          </h1>
+        </div>
 
-        <div className="absolute inset-0 flex flex-col justify-center  opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
-          <div className="hover:bg-[rgba(0,143,188,0.7)] absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out ">
-            <img
-              src={caseData?.case_study?.logo?.original_url}
-              alt="logo"
-              className="mb- text-xl font-semibold tracking-tight text-white w-2/5"
-            />
-            <h4 className="mb- text-xl font-semibold tracking-tight text-white">
-              {caseData.title}
-            </h4>
-          </div>
+        <div className="mt-10 font-[400] pl-5 pr-80">
+          {caseData?.case_study?.insight &&
+            parse(caseData?.case_study?.insight)}
+        </div>
+        <div className="mt-10 font-[400] pl-5 pr-80">
+          {caseData?.case_study?.opportunity &&
+            parse(caseData?.case_study?.opportunity)}
+        </div>
+        <div className="mt-10 font-[400] pl-5 pr-80">
+          {caseData?.case_study?.execution &&
+            parse(caseData?.case_study?.execution)}
+        </div>
+        <div className="mt-10 font-[400] pl-5 pr-80">
+          {caseData?.case_study?.results &&
+            parse(caseData?.case_study?.results)}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

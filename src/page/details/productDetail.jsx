@@ -32,16 +32,30 @@ function ProductDetail() {
   return (
     <div>
       <div key={data?._id}>
-        <img
-          className="w-full"
-          src={data?.post?.thumbnail?.original_url}
-          alt={data?.post?.content}
-          title={data?.post?.title}
-        />
+        <div
+          style={{ position: "relative", textAlign: "center", color: "white" }}
+        >
+          <img
+            className="w-full h-[700px]"
+            src={data?.post?.thumbnail?.original_url}
+            alt={data?.post?.content}
+            title={data?.post?.title}
+            style={{ filter: "brightness(50%)" }}
+          />
 
-        <h1 className="flex flex-col items-center font-medium mt-10">
-          {data?.post?.title}
-        </h1>
+          <h1
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              fontSize: "50px",
+              fontWeight: "bold",
+            }}
+          >
+            {data?.post?.title}
+          </h1>
+        </div>
         <div className="mt-10 font-[400] pl-5 pr-80">
           {data?.post?.content && parse(data?.post?.content)}
         </div>

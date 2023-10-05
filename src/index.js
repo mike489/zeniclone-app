@@ -7,12 +7,17 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./app/store";
 
+import Footer from "./componets/footer";
+import NavBar from "./componets/NavBar";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
+        <NavBar />
         <App />
+        <Footer />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
