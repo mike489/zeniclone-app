@@ -49,14 +49,14 @@ function ProductDetail() {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              fontSize: "50px",
+              fontSize: "30px",
               fontWeight: "bold",
             }}
           >
             {data?.post?.title}
           </h1>
         </div>
-        <div className="mt-10 font-[400] pl-5 pr-80">
+        <div className="mt-10 font-[500] pl-5 pr-80">
           {data?.post?.content && parse(data?.post?.content)}
         </div>
       </div>

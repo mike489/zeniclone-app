@@ -43,9 +43,9 @@ const Homepage = () => {
           <h1 className="font-normal text-zinc-700 text-[48px]">
             Thought Leadership
           </h1>
-          <div className="flex" key={fetchData?._id}>
+          <div className="flex" key={setPostData?._id}>
             <button
-              onClick={() => navigate(`/blog/article/${fetchData.id}`)}
+              onClick={() => navigate(`/blog/article/${setPostData.id}`)}
               type="button"
               className="flex items-center px-3 py-2 text-base sm:text-lg font-normal text-[#09C5FF] focus:outline-none bg-white border-2 border-[#09C5FF] hover:bg-[#09C5FF] hover:text-white focus:z-10 focus:ring-10"
             >
