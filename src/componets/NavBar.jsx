@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../assets/Logo_spot.webp";
 import axios from "axios";
 import { CustomSpinner } from "./spinner";
 
 const NavBar = () => {
-  const navigate = useNavigate();
-
   const [postData, setPostData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -52,7 +50,10 @@ const NavBar = () => {
               </li>
               <li>
                 <Link
-                  to="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(`/blog`, "_self");
+                  }}
                   className="block py-2 pl-3 pr-4 text-stone-950 rounded font-bold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   Blog
@@ -62,7 +63,7 @@ const NavBar = () => {
                 <Link
                   onClick={(e) => {
                     e.preventDefault();
-                    window.open(`/blog/article/${postData.id}`, "_blank");
+                    window.open(`/blog/article/${postData.id}`, "_self");
                   }}
                   className="block py-2 pl-3 pr-4 text-stone-950 rounded font-bold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
