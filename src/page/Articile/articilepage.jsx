@@ -1,22 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { BiChevronDown, BiChevronRight, BiChevronsRight } from "react-icons/bi";
 
-import SimplePagination from "../../componets/pagination";
 import { CustomSpinner } from "../../componets/spinner";
+import Button from "../../componets/Button";
 
 const Articilepage = () => {
   const [caseData, setCaseData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [counter, setCounter] = useState(1);
-
-  const handleIncrement = () => {
-    setCounter((prev) => prev + 1);
-  };
-
-  const handleDecrement = () => {
-    setCounter((prev) => (prev > 1 ? prev - 1 : prev));
-  };
 
   useEffect(() => {
     fetchCase();
@@ -67,14 +58,10 @@ const Articilepage = () => {
         </div>
       </div>
       <div className="flex flex-col items-center mt-5">
-        <SimplePagination
-          onNext={handleIncrement}
-          onPrev={handleDecrement}
-          counter={counter}
+        <Button
+          onPrev={() => setCounter((prev) => (prev > 1 ? prev - 1 : prev))}
+          onNext={() => setCounter((prev) => prev + 1)}
         />
-        {counter}
-        <button onClick={() => setCounter((prev) => prev + 1)}>Next</button>
-        <button onClick={() => setCounter((prev) => prev - 1)}>Prev</button>
       </div>
     </main>
   );
