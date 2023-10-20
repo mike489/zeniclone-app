@@ -7,6 +7,7 @@ import ProductDetail from "./page/details/productDetail";
 // import CaseStudy from "./page/casestudy/caseDetail";
 import CaseDetail from "./page/casestudy/caseDetail";
 import Articilepage from "./page/Articile/articilepage";
+import BolgPage from "./page/Bolg/bolgPage";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/blog/details/:id" element={<ProductDetail />} />
         <Route path="/blog/case/:id" element={<CaseDetail />} />
-        <Route path="/blog/article/:id" element={<Articilepage />} />
+        <Route path="/blog/article/" element={<Articilepage />} />
+        <Route path="/blog/posts/" element={<BolgPage />} />
+
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

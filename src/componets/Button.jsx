@@ -1,79 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { BiChevronDown } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
-import { FaMapMarkerAlt } from "react-icons/fa"; // Import the map icon
+import React from "react";
 
-const Selector = () => {
-  const [countries, setCountries] = useState(null);
-  const [inputValue, setInputValue] = useState("");
-  const [selected, setSelected] = useState("");
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    fetch("https://restcountries.com/v2/all?fields=name")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountries(data);
-      });
-  }, []);
+const Button = ({ onPrev, onNext, className }) => {
   return (
-    <div className="w-72 font-medium h-fit">
-      <div
-        onClick={() => setOpen(!open)}
-        className={`bg-gray-600  w-full p-2 flex items-center justify-between rounded ${
-          !selected && "text-white"
-        }`}
-      >
-        <FaMapMarkerAlt size={20} color="aqua" className="mr-2" />
-        {selected
-          ? selected?.length > 25
-            ? selected?.substring(0, 25) + "..."
-            : selected
-          : "Local Zenith websites..."}
-        <BiChevronDown size={20} className={`${open && "rotate-180"}`} />
+    <div className=" max-w-lg p-10 container flex justify-center mx-auto">
+      <div className="flex flex-row mx-auto">
+        <button
+          onClick={onPrev}
+          type="button"
+          className={`bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3 ${className}`}
+        >
+          <div className="flex flex-row align-middle">
+            <svg
+              className="w-5 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <p className="ml-2">Prev</p>
+          </div>
+        </button>
+
+        <button
+          onClick={onNext}
+          type="button"
+          className="bg-gray-800 text-white rounded-r-md py-2 border-l border-gray-200 hover:bg-red-700 hover:text-white px-3"
+        >
+          <div className="flex flex-row align-middle">
+            <span className="mr-2">Next</span>
+            <svg
+              className="w-5 ml-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+        </button>
       </div>
-      <ul
-        className={`bg-gray-700 mt-2 overflow-y-auto ${
-          open ? "max-h-60" : "max-h-0"
-        } `}
-      >
-        <div className="flex items-center px-2 sticky top-0 bg-white">
-          <AiOutlineSearch size={18} className="text-gray-700" />
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value.toLowerCase())}
-            placeholder="Enter country name"
-            className="placeholder:text-gray-700 p-2 outline-none"
-          />
-        </div>
-        {countries?.map((country) => (
-          <li
-            key={country?.name}
-            className={`p-2 text-sm hover:bg-sky-600 hover:text-white
-            ${
-              country?.name?.toLowerCase() === selected?.toLowerCase() &&
-              "bg-sky-600 text-white"
-            }
-            ${
-              country?.name?.toLowerCase().startsWith(inputValue)
-                ? "block"
-                : "hidden"
-            }`}
-            onClick={() => {
-              if (country?.name?.toLowerCase() !== selected.toLowerCase()) {
-                setSelected(country?.name);
-                setOpen(false);
-                setInputValue("");
-              }
-            }}
-          >
-            {country?.name}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
 
-export default Selector;
+export default Button;

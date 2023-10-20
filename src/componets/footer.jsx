@@ -1,6 +1,6 @@
 import React from "react";
 import Logo_spot from "../assets/Logo_spot.webp";
-import Selector from "./Button";
+import Selector from "./Footer_Button";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
